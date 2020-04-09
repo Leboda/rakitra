@@ -24,8 +24,8 @@
             <input type="text" name="name" class="form-control" id="name" placeholder="Anarana feno"  data-msg="Ampidiro ny Anaranao" />
             <div class="validate"></div>
           </div>
-          <div class="col-md-6 form-group">
-            <input type="text" class="form-control" name="tel" id="tel" placeholder="Laharana Finday"  data-msg="Ampidiro ny laharana Finday" />
+          <div class="col-md-12 form-group">
+            <input type="email" name="email" class="form-control" id="email" placeholder="adiresy-mailaka@mmmm.mm" data-rule="email" data-msg="Ampidiro ny adiresy mailaka" />
             <div class="validate"></div>
           </div>
         </div>
@@ -34,11 +34,18 @@
             <input type="text" name="adresse" class="form-control" id="adresse" placeholder="Toerana misy anao (Adiresy Mazava)" data-rule="minlen:4" data-msg="Ny toerana misy anao" />
             <div class="validate"></div>
           </div>
-          <div class="col-md-12 form-group">
-            <input type="email" name="email" class="form-control" id="email" placeholder="adiresy-mailaka@mmmm.mm" data-rule="email" data-msg="Ampidiro ny adiresy mailaka" />
+        </div>
+        <div class="form-row">          
+          <div class="col-md-6 form-group">
+            <input type="text" class="form-control" name="tel" id="tel" placeholder="Laharana Finday"  data-msg="Ampidiro ny laharana Finday" />
+            <div class="validate"></div>
+          </div>
+          <div class="col-md-6 form-group">
+            <input type="text" name="rakitra" class="form-control" id="rakitra" placeholder="RAKITRA (Ariary)"  data-msg="Ariary" />
             <div class="validate"></div>
           </div>
         </div>
+        
         <div class="text-center"><button type="submit">Handrotsaka</button></div>
       </form>
 
