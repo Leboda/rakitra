@@ -14,6 +14,7 @@
         <div class="form-row">
           <div class="col-md-12 form-group">
             <select name="service" id="service" class="form-control selectpicker" data-live-search="true" placeholder="Fiangonana misy anao" >
+              <option value="">Fiangonana</option>
               <option value="">EKAR Jean Paul 2 Ampahidrano</option>
               <option value="">FLM Mahamanina Fiadanana</option>
             </select>
