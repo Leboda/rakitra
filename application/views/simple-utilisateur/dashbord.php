@@ -9,7 +9,7 @@
       <p>Mitohy hatrany ny asan'ny Fiangonana amin'ny fanompoana anan'Andriamanitra. </p>
 
 
-      <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+      <form action="<?php echo base_url(); ?>confirm-paiement" name="formRakitra" id="formRakitra" method="post" role="form" class="php-email-form mt-4">
         
         <div class="form-row">
           <div class="col-md-12 form-group">
@@ -47,7 +47,9 @@
           </div>
         </div>
         
-        <div class="text-center"><button type="submit">Handrotsaka</button></div>
+        <div class="text-center">
+          <input type="submit" name="submit" value="Handrotsaka" class="boutton">
+        </div>
       </form>
 
     </div>

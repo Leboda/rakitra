@@ -998,6 +998,15 @@ section .container {
   transition: 0.3s;
   color: #fff;
 }
+.contact .php-email-form .boutton {
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 20px;
+  background: rgba(92, 184, 92, 0.8);
+  border: 0;
+  transition: 0.3s;
+  color: #fff;
+}
 
 .contact .php-email-form input:focus, .contact .php-email-form select:focus {
   background-color: rgba(255, 255, 255, 0.11);
