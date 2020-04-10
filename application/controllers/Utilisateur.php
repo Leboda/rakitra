@@ -20,6 +20,8 @@ class Utilisateur extends CI_Controller
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
 		$this->lang->load('auth','french');
+
+		$this->templates = 'include/authentification';
 	}
 
 	/**
@@ -114,9 +116,8 @@ class Utilisateur extends CI_Controller
 				'class' => 'form-control',
 			];
 
-			$this->_render_page(DIRECTORY_SEPARATOR . 'login', $this->data);
-			//$this->template->set('title','Authentification');
-			//$this->template->load($this->templates,'admin/login',$this->data);
+			$this->template->set('title','Authentification');
+			$this->template->load($this->templates,'login',$this->data);
 		}
 	}
 
