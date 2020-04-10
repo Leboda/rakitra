@@ -19,6 +19,12 @@ class CompteModel extends CI_Model
 		}
 	}
 	public function getIdEgliseByIdCompte($idCompte){
-		
+		$this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where('id_compte', $idCompte);
+        $result =  $this->db->get()->result();
+        foreach ($result as $res) {
+    		return $res->id_eglise;
+    	} 
 	}
 }
