@@ -6,7 +6,7 @@ class OrangeApiConfigModel extends CI_Model
 	public function __construct()
 	{
 		parent::__construct();
-		$this->table = 'eshop_config_api_etablissement';
+		$this->table = 'api';
 	}
 
 	public function add($data){
@@ -90,9 +90,9 @@ class OrangeApiConfigModel extends CI_Model
 	      "currency" => "MGA",
 	      "order_id" => $orderId,
 	      "amount" => $amount,
-	      "return_url" => HTT_MAIN."returnstatus-egouvernu?order=".$orderId,
-	      "cancel_url" => HTT_MAIN."cancel-egouvernu?order=".$orderId,
-	      "notif_url" => HTT_MAIN."setstatus-egouvernu?order=".$orderId,
+	      "return_url" => HTT_MAIN."returnstatus?order=".$orderId,
+	      "cancel_url" => HTT_MAIN,
+	      "notif_url" => HTT_MAIN."setstatus?order=".$orderId,
 	      "lang" => "fr",
 	      "reference" => "ref uf",
 	    ];

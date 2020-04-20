@@ -1,4 +1,4 @@
-jQuery(document).ready(function($) {
+/*jQuery(document).ready(function($) {
   "use strict";
 
   //Contact
@@ -123,4 +123,4 @@ jQuery(document).ready(function($) {
     return false;
   });
 
-});
+});*/

@@ -20,29 +20,29 @@ class Tongasoa extends CI_Controller {
 	}
 	
 	public function addRakitra(){
+		//var_dump($_POST);die;
 		if (isset($_POST)) {
 			$dataPersonne = array(
-				'nom'              => $_POST['dataPersonne']['nom'],
-				'tel'              => $_POST['dataPersonne']['tel'],
-				'email'            => $_POST['dataPersonne']['email'],
-				'adresse'          => $_POST['dataPersonne']['adresse']
+				'nom'              => $_POST['nom'],
+				'tel'              => $_POST['tel'],
+				'mail'            => $_POST['mail'],
+				'adresse'          => $_POST['adresse']
 			);
 			$idFidele = $this->fideleModel->add($dataPersonne);
 
-			$apiInfo = $this->orangeApiConfigModel->getApiTokenSecond($this->input->post('rakitra'),$this->orangeApiConfigModel->getTokenApi(),$this->orangeApiConfigModel->getMarchantKeyApi());
+			$apiInfo = $this->orangeApiConfigModel->getApiTokenSecond($_POST['vola'],$this->orangeApiConfigModel->getTokenApi(),$this->orangeApiConfigModel->getMarchantKeyApi());
 			
 			if ($apiInfo['message'] == 'OK') {		
 				$dataTransaction = array(
 					'id_fidele'          => $idFidele,
-					'id_compte'          => $this->compteModel->getIdEgliseByIdCompte($this->input->post('id_compte')),
-					'montant'            => $this->input->post('rakitra'),
+					'id_compte'          => $this->compteModel->getIdCompteByIdEglise($_POST['eglise']),
+					'montant'            => $_POST['vola'],
 					'date'               => time(),
-					'ordre_paiement'     => $apiInfo['ordre_paiement'],
+					'ordre_paiement'     => $apiInfo['orderId'],
 					'status'             => 'INITIATED',
-					'token_paiement'     => $apiInfo['token_paiement'],
+					'token_paiement'     => $apiInfo['pay_token'],
 					'notif_token'        => NULL,
-					'txnid'              => NULL,
-					'token_paiement'     => $idPersonne
+					'txnid'              => NULL
 				);
 				$this->transactionModel->add($dataTransaction); 
 				redirect($apiInfo['redirecturl'],"refresh"); 					

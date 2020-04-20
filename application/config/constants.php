@@ -83,3 +83,9 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+
+define('HTT_MAIN', "http://192.198.1.108/rakitra/");
+define('URL_API_ORANGE_TOKEN', "https://api.orange.com/oauth/v2/token");
+/*prod*/
+define('URL_API_ORANGE_LOADING_PAIEMENT', "https://api.orange.com/orange-money-webpay/mg/v1/webpayment");

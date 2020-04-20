@@ -78,7 +78,7 @@
     $(".mobile-nav, .mobile-nav-toggle").hide();
   }
 
-  // jQuery counterUp
+ /* // jQuery counterUp
   $('[data-toggle="counter-up"]').counterUp({
     delay: 10,
     time: 1000
@@ -132,6 +132,6 @@
   // Initiate venobox (lightbox feature used in portofilo)
   $(document).ready(function() {
     $('.venobox').venobox();
-  });
+  });*/
 
 })(jQuery);

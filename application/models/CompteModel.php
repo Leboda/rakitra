@@ -18,13 +18,13 @@ class CompteModel extends CI_Model
 			return $this->db->insert_id();
 		}
 	}
-	public function getIdEgliseByIdCompte($idCompte){
+	public function getIdCompteByIdEglise($idEglise){
 		$this->db->select('*');
         $this->db->from($this->table);
-        $this->db->where('id_compte', $idCompte);
+        $this->db->where('id_eglise', $idEglise);
         $result =  $this->db->get()->result();
         foreach ($result as $res) {
-    		return $res->id_eglise;
+    		return $res->id;
     	} 
 	}
 }

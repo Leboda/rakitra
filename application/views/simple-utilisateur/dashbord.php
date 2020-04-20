@@ -9,46 +9,46 @@
       <p>Mitohy hatrany ny asan'ny Fiangonana amin'ny fanompoana anan'Andriamanitra. </p>
 
 
-      <form action="<?php echo base_url(); ?>confirm-paiement" name="formRakitra" id="formRakitra" method="post" role="form" class="php-email-form mt-4">
+      <form action="confirm-paiement" name="formRakitra" id="formRakitra" method="post" role="form" class="php-email-form mt-4">
         
         <div class="form-row">
           <div class="col-md-12 form-group">
-            <select name="service" id="service" class="form-control selectpicker" data-live-search="true" placeholder="Fiangonana misy anao" >
-              <option value="">Fiangonana</option>
-              <option value="">EKAR Jean Paul 2 Ampahidrano</option>
-              <option value="">FLM Mahamanina Fiadanana</option>
+            <select name="eglise" id="eglise" class="form-control selectpicker" data-live-search="true" placeholder="Fiangonana misy anao" >
+              <option value="0">Fiangonana</option>
+              <option value="1">EKAR Jean Paul 2 Ampahidrano</option>
+              <option value="2">FLM Mahamanina Fiadanana</option>
             </select>
           </div> 
         </div>       
         <div class="form-row">
           <div class="col-md-6 form-group">
-            <input type="text" name="name" class="form-control" id="name" placeholder="Anarana feno"  data-msg="Ampidiro ny Anaranao" />
+            <input type="text" name="nom" class="form-control" id="nom" placeholder="Anarana feno" />
             <div class="validate"></div>
           </div>
           <div class="col-md-6 form-group">
-            <input type="email" name="email" class="form-control" id="email" placeholder="adiresy-mailaka@mmmm.mm" data-rule="email" data-msg="Ampidiro ny adiresy mailaka" />
+            <input type="email" name="mail" class="form-control" id="mail" placeholder="adiresy-mailaka@mmmm.mm" />
             <div class="validate"></div>
           </div>
         </div>
         <div class="form-row">
           <div class="col-md-12 form-group">
-            <input type="text" name="adresse" class="form-control" id="adresse" placeholder="Toerana misy anao (Adiresy Mazava)" data-rule="minlen:4" data-msg="Ny toerana misy anao" />
+            <input type="text" name="adresse" class="form-control" id="adresse" placeholder="Toerana misy anao (Adiresy Mazava)" />
             <div class="validate"></div>
           </div>
         </div>
-        <div class="form-row">          
+        <div class="form-row">
           <div class="col-md-6 form-group">
-            <input type="text" class="form-control" name="tel" id="tel" placeholder="Laharana Finday"  data-msg="Ampidiro ny laharana Finday" />
+            <input type="text" class="form-control" name="tel" id="tel" placeholder="Laharana Finday"/>
             <div class="validate"></div>
           </div>
           <div class="col-md-6 form-group">
-            <input type="text" name="rakitra" class="form-control" id="rakitra" placeholder="Vola arotsaka (Ariary)"  data-msg="Ariary" />
+            <input type="text" name="vola" id="vola" class="form-control"  placeholder="Vola arotsaka (Ariary)"/>
             <div class="validate"></div>
           </div>
         </div>
         
         <div class="text-center">
-          <input type="submit" name="submit" value="Handrotsaka" class="boutton">
+          <button type="submit" id="boutton" class="boutton">Handrotsaka</button>
         </div>
       </form>
 
