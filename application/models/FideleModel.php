@@ -18,4 +18,11 @@ class FideleModel extends CI_Model
 			return $this->db->insert_id();
 		}
 	}
+
+	public function getAllByIdEglise($idEglise){
+		$this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where('id_eglise', $idEglise);
+        return $this->db->get(); 
+	}
 }

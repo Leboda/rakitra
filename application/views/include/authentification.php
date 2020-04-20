@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Covid-19 - Authentification</title>
+    <title>Rakitra - Authentification</title>
     <!-- Favicon-->
     <link rel="icon" href="<?php echo base_url(); ?>adminEglise/favicon.ico" type="image/x-icon">
 

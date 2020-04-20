@@ -499,9 +499,7 @@ class Ion_auth_model extends CI_Model
 		}
 
 		$data = [
-			'forgotten_password_selector' => NULL,
-			'forgotten_password_code' => NULL,
-			'forgotten_password_time' => NULL
+			'forgotten_password_code' => NULL
 		];
 
 		$this->db->update($this->tables['users'], $data, [$this->identity_column => $identity]);
@@ -739,9 +737,7 @@ class Ion_auth_model extends CI_Model
 		$token = $this->_generate_selector_validator_couple(20, 80);
 
 		$update = [
-			'forgotten_password_selector' => $token->selector,
-			'forgotten_password_code' => $token->validator_hashed,
-			'forgotten_password_time' => time()
+			'forgotten_password_code' => $token->validator_hashed
 		];
 
 		$this->trigger_events('extra_where');
@@ -862,6 +858,8 @@ class Ion_auth_model extends CI_Model
 
 		$id = $this->db->insert_id($this->tables['users'] . '_id_seq');
 
+
+
 		// add in groups array if it doesn't exists and stop adding into default group if default group ids are set
 		if (isset($default_group->id) && empty($groups))
 		{
@@ -871,9 +869,12 @@ class Ion_auth_model extends CI_Model
 		if (!empty($groups))
 		{
 			// add to groups
-			foreach ($groups as $group)
-			{
-				$this->add_to_group($group, $id);
+			if (is_array($groups) || is_object($groups)){
+
+				foreach ($groups as $group)
+				{
+					$this->add_to_group($group, $id);
+				}
 			}
 		}
 
@@ -904,7 +905,7 @@ class Ion_auth_model extends CI_Model
 
 		$this->trigger_events('extra_where');
 
-		$query = $this->db->select($this->identity_column . ', email, id, password, active, last_login, first_name')
+		$query = $this->db->select($this->identity_column . ', email, id, password, active, last_login')
 						  ->where($this->identity_column, $identity)
 						  ->limit(1)
 						  ->order_by('id', 'desc')
@@ -1941,7 +1942,6 @@ class Ion_auth_model extends CI_Model
 		    'identity'             => $user->{$this->identity_column},
 		    $this->identity_column => $user->{$this->identity_column},
 		    'email'                => $user->email,
-		    'firstname'            => $user->first_name,
 		    'user_id'              => $user->id, //everyone likes to overwrite id so we'll use user_id
 		    'old_last_login'       => $user->last_login,
 		    'last_check'           => time(),

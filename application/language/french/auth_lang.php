@@ -59,6 +59,7 @@ $lang['create_user_heading']                           = 'Créer un utilisateur'
 $lang['create_user_subheading']                        = 'Veuillez entrer les informations ci-dessous.';
 $lang['create_user_fname_label']                       = 'Prénom :';
 $lang['create_user_lname_label']                       = 'Nom :';
+$lang['create_user_adresse_label']                     = 'Adresse :';
 $lang['create_user_identity_label']                    = 'Identité :';
 $lang['create_user_company_label']                     = 'Société :';
 $lang['create_user_email_label']                       = 'Email :';

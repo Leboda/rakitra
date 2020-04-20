@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Covid-19 | <?php echo $title; ?></title>
+        <title>Rakitra | <?php echo $title; ?></title>
         <!-- Favicon-->
         <link rel="icon" href="<?php echo base_url(); ?>sources/img/favicon.png" type="image/x-icon">
 

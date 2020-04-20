@@ -11,24 +11,27 @@ class Tongasoa extends CI_Controller {
 		$this->load->model('transactionModel');	
 		$this->load->model('compteModel');	
 		$this->load->model('fideleModel');	
+		$this->load->model('egliseModel');	
 	}
 
 	public function index()
 	{
+		$this->data['eglise'] = $this->egliseModel->getAll()->result();
 		$this->template->set('title','Tongasoa');
-		$this->template->load($this->templates,$this->views.'dashbord');
+		$this->template->load($this->templates,$this->views.'dashbord',$this->data);
 	}
 	
 	public function addRakitra(){
 		//var_dump($_POST);die;
 		if (isset($_POST)) {
-			$dataPersonne = array(
-				'nom'              => $_POST['nom'],
-				'tel'              => $_POST['tel'],
-				'mail'            => $_POST['mail'],
-				'adresse'          => $_POST['adresse']
+			$dataPersonneFidele = array(
+				'nom'               => $_POST['nom'],
+				'tel'               => $_POST['tel'],
+				'mail'              => $_POST['mail'],
+				'id_eglise'         => $_POST['eglise'],
+				'adresse'           => $_POST['adresse']
 			);
-			$idFidele = $this->fideleModel->add($dataPersonne);
+			$idFidele = $this->fideleModel->add($dataPersonneFidele);
 
 			$apiInfo = $this->orangeApiConfigModel->getApiTokenSecond($_POST['vola'],$this->orangeApiConfigModel->getTokenApi(),$this->orangeApiConfigModel->getMarchantKeyApi());
 			

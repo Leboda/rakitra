@@ -22,9 +22,23 @@ class CompteModel extends CI_Model
 		$this->db->select('*');
         $this->db->from($this->table);
         $this->db->where('id_eglise', $idEglise);
-        $result =  $this->db->get()->result();
-        foreach ($result as $res) {
-    		return $res->id;
+        $result =  $this->db->get();
+        if ($result->num_rows() >= 1) {        	
+	        foreach ($result->result() as $res) {
+	    		return $res->id;
+	    	} 
     	} 
+	}
+
+	public function getAllByIdEglise($idEglise){
+		$this->db->select('montant_total');
+        $this->db->from($this->table);
+        $this->db->where('id_eglise', $idEglise);
+        $result =  $this->db->get();
+        if ($result->num_rows() >= 1) {        	
+	        foreach ($result->result() as $res) {
+	    		return $res->montant_total;
+	    	} 
+        }
 	}
 }

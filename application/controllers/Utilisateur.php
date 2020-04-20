@@ -16,6 +16,7 @@ class Utilisateur extends CI_Controller
 		$this->load->library(['ion_auth', 'form_validation']);
 		$this->load->helper(['url', 'language']);
 		$this->templates = 'template';
+		$this->load->model('egliseModel');	
 
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
@@ -68,31 +69,82 @@ class Utilisateur extends CI_Controller
 	public function login()
 	{
 		$this->data['title'] = $this->lang->line('login_heading');
+		$table_ion_auth  = $this->config->item('tables', 'ion_auth');
+			$identity_column = $this->config->item('identity', 'ion_auth');
+			$this->data['identity_column'] = $identity_column;
 
-		// validate form input
-		$this->form_validation->set_rules('identity', str_replace(':', '', $this->lang->line('login_identity_label')), 'required');
-		$this->form_validation->set_rules('password', str_replace(':', '', $this->lang->line('login_password_label')), 'required');
+		
+		if ($this->input->post('form-auth-choice') == 1) {
+			$this->form_validation->set_rules('adresse', 'lang:adresse', 'required');
+			$this->form_validation->set_rules('phone', 'lang:phone', 'trim');
+			$this->form_validation->set_rules('password_subscribe', 'lang:password', 'required|matches[password_confirm]');
+			$this->form_validation->set_rules('password_confirm', 'Confiramation mot de passe', 'required');
+		}
+		else{
+			// validate form input
+			$this->form_validation->set_rules('identity', str_replace(':', '', $this->lang->line('login_identity_label')), 'required');
+			$this->form_validation->set_rules('password', str_replace(':', '', $this->lang->line('login_password_label')), 'required');
+		}
+
 
 		if ($this->form_validation->run() === TRUE)
 		{
-			// check to see if the user is logging in
-			// check for "remember me"
-			$remember = (bool)$this->input->post('remember');
+			if ($this->input->post('form-auth-choice') == 1) {
+				$email    = strtolower($this->input->post('email'));
+				$identity = $email;
+				$password = $this->input->post('password_subscribe');
 
-			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember))
-			{
-				//if the login is successful
-				//redirect them back to the home page
-				
-				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('admin-page', 'refresh');
+				$additional_data = array(
+					'tel' => $this->input->post('phone')
+				);
+				$user_id = $this->ion_auth->register($identity, $password, $email, $additional_data, 3);
+				$data_eglise = array(
+					'nom' => $this->input->post('name'),
+					'adresse' => $this->input->post('adresse'),
+					'description' => $this->input->post('description'),
+					'id_utilisateur' => $user_id
+				);
+				$id = $this->egliseModel->add($data_eglise);
+				if ($id != "" && $this->ion_auth->login($identity, $password, "")) {
+					$data_user_session = array(
+	                   'idEglise'       => $id,
+	                   'nom'            => $this->input->post('name')
+	               	);
+					$this->session->set_userdata($data_user_session);
+
+					$this->session->set_flashdata('message', $this->ion_auth->messages());
+					redirect('eglise-page', 'refresh');
+				}
+
 			}
-			else
-			{
-				// if the login was un-successful
-				// redirect them back to the login page
-				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect('user-login', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
+			else{
+				// check to see if the user is logging in
+				// check for "remember me"
+				$remember = (bool)$this->input->post('remember');
+
+				if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember))
+				{
+					$this->session->set_flashdata('message', $this->ion_auth->messages());
+					if ($this->ion_auth->is_admin($this->session->userdata('user_id'))){
+						redirect('admin-page', 'refresh');
+					}
+					else{
+						$data_user_session = array(
+	                   		'idEglise'       => $this->egliseModel->getIdByUserId($this->session->userdata('user_id')),
+		                    'nom'            => $this->egliseModel->getNameByUserId($this->session->userdata('user_id'))
+		               	);
+						$this->session->set_userdata($data_user_session);
+						redirect('eglise-page', 'refresh');
+					}
+					
+				}
+				else
+				{
+					// if the login was un-successful
+					// redirect them back to the login page
+					$this->session->set_flashdata('message', $this->ion_auth->errors());
+					redirect('user-login', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
+				}
 			}
 		}
 		else
@@ -101,20 +153,70 @@ class Utilisateur extends CI_Controller
 			// set the flash data error message if there is one
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
-			$this->data['identity'] = [
-				'name' => 'identity',
-				'id' => 'identity',
-				'type' => 'text',
-				'value' => $this->form_validation->set_value('identity'),
-				'class' => 'form-control',
-			];
-
 			$this->data['password'] = [
 				'name' => 'password',
 				'id' => 'password',
+				'placeholder'    => 'Mot de passe',
 				'type' => 'password',
 				'class' => 'form-control',
 			];
+			$this->data['name'] = array(
+				'type'  => 'text',
+				'name'  => 'name',
+				'id'    => 'name',
+				'placeholder'    => 'Nom',
+				'value' => $this->form_validation->set_value('name'),
+				'class' => 'form-control'
+			);
+			$this->data['identity'] = array(
+					'type'  => 'text',
+					'name'  => 'identity',
+					'id'    => 'identity',
+					'placeholder'    => 'Identifiant',
+					'value' => $this->form_validation->set_value('identity'),
+					'class' => 'form-control'
+				);
+			$this->data['password_subscribe'] = array(
+					'type'  => 'password',
+					'name'  => 'password_subscribe',
+					'id'    => 'password_subscribe',
+					'placeholder'    => 'Mot de passe',
+					'class' => 'form-control'
+				);
+
+			
+			$this->data['password_confirm'] = array(
+					'type'  => 'password',
+					'name'  => 'password_confirm',
+					'id'    => 'password_confirm',
+					'placeholder'    => 'Confirmer le mot de passe',
+					'value' => $this->form_validation->set_value('password_confirm'),
+					'class' => 'form-control'
+				);
+			$this->data['phone'] = array(
+					'type'  => 'text',
+					'name'  => 'phone',
+					'id'    => 'phone',
+					'placeholder'    => 'Num&eacute;ro t&eacute;l&eacute;phone',
+					'value' => $this->form_validation->set_value('phone'),
+					'class' => 'form-control'
+				);
+			$this->data['email'] = array(
+					'type'  => 'email',
+					'name'  => 'email',
+					'id'    => 'email',
+					'placeholder'    => 'Adresse e-mail',
+					'value' => $this->form_validation->set_value('email'),
+					'class' => 'form-control'
+				);
+			$this->data['adresse'] = array(
+				'type'  => 'text',
+				'name'  => 'adresse',
+				'id'    => 'adresse',
+				'placeholder'    => 'Adresse',
+				'value' => $this->form_validation->set_value('adresse'),
+				'class' => 'form-control'
+			);
 
 			$this->template->set('title','Authentification');
 			$this->template->load($this->templates,'login',$this->data);
@@ -401,12 +503,12 @@ class Utilisateur extends CI_Controller
 
 	public function add()
 	{
-		if ( ! $this->ion_auth->logged_in() && ! $this->ion_auth->is_admin())
+		/*if ( ! $this->ion_auth->logged_in() && ! $this->ion_auth->is_admin())
 		{
 			redirect('auth/login', 'refresh');
 		}
 		else
-		{
+		{*/
 			$table_ion_auth  = $this->config->item('tables', 'ion_auth');
 			$identity_column = $this->config->item('identity', 'ion_auth');
 
@@ -525,11 +627,10 @@ class Utilisateur extends CI_Controller
 
 				$this->data['message']      = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 				
-
-				$this->template->set('title','Covid19 - '.$this->lang->line('create_user_heading'));
-				$this->template->load($this->templates,'admin/formUtilisateur',$this->data);
+				$this->template->set('title','Authentification');
+				$this->template->load($this->templates,'login',$this->data);
 			}
-		}
+		//}
 	}
 
 	/**

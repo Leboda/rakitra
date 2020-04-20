@@ -13,10 +13,11 @@
         
         <div class="form-row">
           <div class="col-md-12 form-group">
-            <select name="eglise" id="eglise" class="form-control selectpicker" data-live-search="true" placeholder="Fiangonana misy anao" >
-              <option value="0">Fiangonana</option>
-              <option value="1">EKAR Jean Paul 2 Ampahidrano</option>
-              <option value="2">FLM Mahamanina Fiadanana</option>
+            <select name="eglise" id="eglise" class="form-control selectpicker">
+              <option>Fiangonana misy anao</option>
+              <?php foreach ($eglise as $e) { ?>
+                <option value="<?php echo $e->id; ?>"><?php echo utf8_decode($e->nom); ?></option>
+              <?php } ?>
             </select>
           </div> 
         </div>       

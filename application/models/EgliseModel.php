@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class TransactionModel extends CI_Model
+class EgliseModel extends CI_Model
 {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->table = 'transaction';
+		$this->table = 'eglise';
 	}
 
 
@@ -18,22 +18,29 @@ class TransactionModel extends CI_Model
 			return $this->db->insert_id();
 		}
 	}
-	public function getAmountByIdFidele($idFidele){
-		$this->db->select('montant');
+
+	public function getNameByUserId($userId){
+		$this->db->select('nom');
         $this->db->from($this->table);
-        $this->db->where('id_fidele', $idFidele);
+        $this->db->where('id_utilisateur', $userId);
         $result = $this->db->get()->result(); 
        foreach ($result as $res) {
-           return $res->montant;
+           return $res->nom;
        }
-   }
-   public function getStatusByIdFidele($idFidele){
-		$this->db->select('status');
+	}
+	public function getIdByUserId($userId){
+		$this->db->select('id');
         $this->db->from($this->table);
-        $this->db->where('id_fidele', $idFidele);
+        $this->db->where('id_utilisateur', $userId);
         $result = $this->db->get()->result(); 
        foreach ($result as $res) {
-           return $res->status;
+           return $res->id;
        }
-   }
+	}
+
+	public function getAll(){
+		$this->db->select('*');
+        $this->db->from($this->table);
+        return $this->db->get(); 
+	}
 }

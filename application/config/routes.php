@@ -53,4 +53,13 @@ $route['default_controller']    = 'tongasoa';
 $route['404_override']          = '';
 $route['translate_uri_dashes']  = FALSE;
 $route['user-login']            = 'utilisateur/login';
+$route['logout']                = 'utilisateur/logout';
 $route['confirm-paiement']      = 'tongasoa/addRakitra';
+
+
+
+
+$route['eglise-page']            = 'eglise/page';
+$route['attach-money']           = 'eglise/page/money';
+$route['attach-fidel']           = 'eglise/page/fidele';
+

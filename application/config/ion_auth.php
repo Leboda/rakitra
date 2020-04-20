@@ -38,7 +38,7 @@ $config['database_group_name'] = '';
 | -------------------------------------------------------------------------
 | Database table names.
 */
-$config['tables']['users']           = 'users';
+$config['tables']['users']           = 'utilisateur';
 $config['tables']['groups']          = 'groups';
 $config['tables']['users_groups']    = 'users_groups';
 $config['tables']['login_attempts']  = 'login_attempts';
@@ -130,15 +130,15 @@ $config['argon2_admin_params']		= [
  | The library will fail for empty password or password size above 4096 bytes.
  | This is an arbitrary (long) value to protect against DOS attack.
  */
-$config['site_title']                 = "Example.com";       // Site Title, example.com
-$config['admin_email']                = "admin@example.com"; // Admin Email, admin@example.com
+$config['site_title']                 = "rakitra.com";       // Site Title, example.com
+$config['admin_email']                = "alex-dev@univ-fianar.mg"; // Admin Email, admin@example.com
 $config['default_group']              = 'members';           // Default group, use name
 $config['admin_group']                = 'admin';             // Default administrators group, use name
 $config['identity']                   = 'email';             /* You can use any unique column in your table as identity column.
 															    The values in this column, alongside password, will be used for login purposes
 															    IMPORTANT: If you are changing it from the default (email),
 															    		   update the UNIQUE constraint in your DB */
-$config['min_password_length']        = 8;                   // Minimum Required Length of Password (not enforced by lib - see note above)
+$config['min_password_length']        = 3;                   // Minimum Required Length of Password (not enforced by lib - see note above)
 $config['email_activation']           = FALSE;               // Email Activation for registration
 $config['manual_activation']          = FALSE;               // Manual Activation for registration
 $config['remember_users']             = TRUE;                // Allow users to be remembered and enable auto-login
