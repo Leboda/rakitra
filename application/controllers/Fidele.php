@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Tongasoa extends CI_Controller {
+class Fidele extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
 		$this->templates = 'include/simple-utilisateur';
-		$this->views     = 'simple-utilisateur/';
+		$this->views     = 'fidele/';
 		$this->load->model('orangeApiConfigModel');		
 		$this->load->model('transactionModel');	
 		$this->load->model('compteModel');	
@@ -22,7 +22,6 @@ class Tongasoa extends CI_Controller {
 	}
 	
 	public function addRakitra(){
-		//var_dump($_POST);die;
 		if (isset($_POST)) {
 			$dataPersonneFidele = array(
 				'nom'               => $_POST['nom'],
@@ -41,13 +40,16 @@ class Tongasoa extends CI_Controller {
 					'id_compte'          => $this->compteModel->getIdCompteByIdEglise($_POST['eglise']),
 					'montant'            => $_POST['vola'],
 					'date'               => time(),
-					'ordre_paiement'     => $apiInfo['orderId'],
 					'status'             => 'INITIATED',
+					'ordre_paiement'     => $apiInfo['orderId'],
 					'token_paiement'     => $apiInfo['pay_token'],
+					/*'ordre_paiement'     => "Test_oder",
+					'token_paiement'     => "test_token",*/
 					'notif_token'        => NULL,
 					'txnid'              => NULL
 				);
 				$this->transactionModel->add($dataTransaction); 
+				//redirect("test_redirect_url_orange","refresh"); 					
 				redirect($apiInfo['redirecturl'],"refresh"); 					
 			}
 		}

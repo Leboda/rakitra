@@ -17,6 +17,7 @@ class Utilisateur extends CI_Controller
 		$this->load->helper(['url', 'language']);
 		$this->templates = 'template';
 		$this->load->model('egliseModel');	
+		$this->load->model('compteModel');	
 
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
@@ -105,6 +106,11 @@ class Utilisateur extends CI_Controller
 					'id_utilisateur' => $user_id
 				);
 				$id = $this->egliseModel->add($data_eglise);
+				$data_compte = array(
+					'id_eglise' => $id,
+					'montant_total' => 0
+				);
+				$this->compteModel->add($data_compte);
 				if ($id != "" && $this->ion_auth->login($identity, $password, "")) {
 					$data_user_session = array(
 	                   'idEglise'       => $id,

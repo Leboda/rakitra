@@ -41,4 +41,36 @@ class CompteModel extends CI_Model
 	    	} 
         }
 	}
+
+	public function getAmountByIdCompte($id){
+		$this->db->select('montant_total');
+        $this->db->from($this->table);
+        $this->db->where('id', $id);
+        $result = $this->db->get()->result(); 
+       foreach ($result as $res) {
+           return $res->montant_total;
+       }
+	}
+
+	public function update($data,$id){	
+		$this->db->update($this->table, $data, array('id' => $id));
+		if ($this->db->trans_status() === FALSE)
+		{
+			$this->db->trans_rollback();
+			return FALSE;
+		}
+		$this->db->trans_commit();
+		return TRUE;
+	}
+
+	public function updateByIdEglise($data,$id_eglise){	
+		$this->db->update($this->table, $data, array('id_eglise' => $id_eglise));
+		if ($this->db->trans_status() === FALSE)
+		{
+			$this->db->trans_rollback();
+			return FALSE;
+		}
+		$this->db->trans_commit();
+		return TRUE;
+	}
 }

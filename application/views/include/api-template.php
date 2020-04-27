@@ -13,7 +13,6 @@
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  
   <!-- Google Fonts -->
   <link href="<?php echo base_url(); ?>assets/css/css.css" rel="stylesheet">
 
@@ -42,27 +41,14 @@
 
   <!-- ======= Header ======= -->
   <header id="header" class="header-tops">
-    <div class="container">
+    <div class="container text-center">
 
-      <h1><a href="index.html">RAKITRA</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-      <h2>"Samia manao araka izay efa nokasainy tao am-pony avy, tsy amin'alahelo na an-tery, fa ny manome an-kafaliana no sitrak'Andriamanitra" <span>2 Korintiana 9,7</span></h2>
+      <?php
+        echo $contents;
+      ?>
 
-      <nav class="nav-menu d-none d-lg-block">
-        <ul>
-          <li class="active"><a href="#header">Tongasoa</a></li>
-          <li><a href="#rakitra">Hanao rakitra</a></li>
-          <li><a href="#mombamomba">Mombamomba</a></li>
-          <li><a href="<?php echo base_url(); ?>user-login">Ny fiangonana</a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
     </div>
   </header><!-- End Header -->
-
-  <?php
-    echo $contents;
-  ?>
 
 
   

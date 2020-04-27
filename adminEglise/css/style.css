@@ -7719,8 +7719,13 @@ fieldset[disabled] .form-control {
   color: #2196F3; }
 
 /* Login Page ================================== */
+
 .login-page {
-  background-color: #E91E63;
+  /*background-color: #E91E63;*/
+  background: #040404 url(../images/bg.jpg) top right no-repeat;
+  background-size: cover;
+  content: "";
+    position: inherit;
   padding-left: 0;
   max-width: 600px;
   margin: 5% auto;

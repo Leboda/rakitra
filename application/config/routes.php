@@ -49,12 +49,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller']    = 'tongasoa';
-$route['404_override']          = '';
-$route['translate_uri_dashes']  = FALSE;
-$route['user-login']            = 'utilisateur/login';
-$route['logout']                = 'utilisateur/logout';
-$route['confirm-paiement']      = 'tongasoa/addRakitra';
+$route['default_controller']     = 'fidele';
+$route['404_override']           = '';
+$route['translate_uri_dashes']   = FALSE;
+$route['user-login']             = 'utilisateur/login';
+$route['logout']                 = 'utilisateur/logout';
+$route['confirm-paiement']       = 'fidele/addRakitra';
+
+
+/*Api status*/
+$route['cancel-rakitra']         = 'orange/api/cancel';
+$route['setstatus-rakitra']      = 'orange/api/setstatus';
+$route['returnstatus-rakitra']   = 'orange/api/returnstatus';
 
 
 
@@ -62,4 +68,21 @@ $route['confirm-paiement']      = 'tongasoa/addRakitra';
 $route['eglise-page']            = 'eglise/page';
 $route['attach-money']           = 'eglise/page/money';
 $route['attach-fidel']           = 'eglise/page/fidele';
+
+
+
+/*Super admin page*/
+$route['admin-page']             = 'admin/page';
+$route['verif-code']             = 'admin/page/getcode';
+$route['eglise-manage']          = 'admin/eglise';
+$route['transcation-manage']     = 'admin/transcation';
+$route['api-manage']             = 'admin/api';
+$route['update-api']             = 'admin/api/update';
+$route['user-manage']            = 'admin/user';
+$route['add-versement']          = 'admin/versement/add';
+$route['list-versement']          = 'admin/versement';
+
+
+
+
 

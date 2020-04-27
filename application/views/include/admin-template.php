@@ -44,7 +44,7 @@
                         </div>
                     </div>
                 </div>
-                <p>Please wait...</p>
+                <p>Veuillez patienter...</p>
             </div>
         </div>
         <!-- #END# Page Loader -->
@@ -68,14 +68,14 @@
                 <div class="navbar-header">
                     <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                     <a href="javascript:void(0);" class="bars"></a>
-                    <a class="navbar-brand" href="<?php echo base_url(); ?>adminEglise/index.html">ADMINISTRATION - COVID19</a>
+                    <a class="navbar-brand" href="<?php echo base_url(); ?>adminEglise/index.html">ADMIN RAKITRA - <?php echo $this->session->userdata('identity'); ?></a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Call Search -->
                         <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
                         
-                        <li class="pull-right"><a title="Déconnexion" href="<?php echo base_url(); ?>user-logout"><i class="material-icons">input</i></a></li>
+                        <li class="pull-right"><a title="Déconnexion" href="<?php echo base_url(); ?>logout"><i class="material-icons">input</i></a></li>
                     </ul>
                 </div>
             </div>
@@ -113,15 +113,35 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url(); ?>list-demande">
-                                <i class="material-icons">view_list</i>
-                                <span>Demandes de circulation</span>
+                            <a href="<?php echo base_url(); ?>eglise-manage">
+                                <i class="material-icons">home</i>
+                                <span>Eglise</span>
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url(); ?>user-list">
-                                <i class="material-icons">view_list</i>
-                                <span>Liste des utilisateurs</span>
+                            <a href="<?php echo base_url(); ?>transcation-manage">
+                                <i class="material-icons">attach_money</i>
+                                <span>Transaction</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="<?php echo base_url(); ?>api-manage">
+                                <i class="material-icons">person</i>
+                                <span>Api</span>
+                            </a>
+                        </li>
+                        <!--li>
+                            <a href="<?php echo base_url(); ?>user-manage">
+                                <i class="material-icons">person</i>
+                                <span>Utilisateur</span>
+                            </a>
+                        </li-->
+
+                        <li>
+                            <a href="<?php echo base_url(); ?>list-versement">
+                                <i class="material-icons">attach_money</i>
+                                <span>Versement</span>
                             </a>
                         </li>
                     </ul>
@@ -130,7 +150,7 @@
                 <!-- Footer -->
                 <div class="legal">
                     <div class="copyright">
-                        &copy; 2016 - 2017 <a href="javascript:void(0);">Covid19 - Copyright @univ-fianar.mg</a>.
+                         Copyright ® | 2020  <a href="https://www.univ-fianar.mg">Université de Fianarantsoa</a>
                     </div>
                 </div>
                 <!-- #Footer -->
@@ -192,7 +212,7 @@
 
         <!-- Demo Js -->
         <script src="<?php echo base_url(); ?>adminEglise/js/demo.js"></script>
-        <script src="<?php echo base_url(); ?>adminEglise/js/AdminCovMgScript.js"></script>
+        <script src="<?php echo base_url(); ?>adminEglise/js/EgliseScript.js"></script>
     </body>
 
 </html>

@@ -11575,7 +11575,7 @@
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
 			 *        "language": {
-			 *          "loadingRecords": "Please wait - loading..."
+			 *          "loadingRecords": "Veuillez patienter - loading..."
 			 *        }
 			 *      } );
 			 *    } );

@@ -16,11 +16,11 @@ class OrangeApiConfigModel extends CI_Model
 		}
 	}
 
-	public function getApi($idComposant){
+	public function getApi($idCompte){
 		$this->db->select('*');
         $this->db->from($this->table);
         if ($idComposant != NULL) {
-        	$this->db->where('id_composant', $idComposant);
+        	$this->db->where('idCompte', $idCompte);
         }
     	return $this->db->get();     
 	}
@@ -47,8 +47,8 @@ class OrangeApiConfigModel extends CI_Model
     	}      
 	}
 
-	public function update($data,$idComposant){
-		$this->db->update($this->table, $data, array('id_composant' => $idComposant));
+	public function update($data,$id){
+		$this->db->update($this->table, $data, array('id' => $id));
 
 		if ($this->db->trans_status() === FALSE)
 		{
@@ -83,16 +83,16 @@ class OrangeApiConfigModel extends CI_Model
 
 
 	public function getApiTokenSecond($amount,$token,$marchant_key){
-		$orderId = "OPE_UF".time().'MG';
+		$orderId = "RAKITRA_LAH_".time().'MG';
 		$datanew =
 	    [
 	      "merchant_key"   => $marchant_key,
 	      "currency" => "MGA",
 	      "order_id" => $orderId,
 	      "amount" => $amount,
-	      "return_url" => HTT_MAIN."returnstatus?order=".$orderId,
-	      "cancel_url" => HTT_MAIN,
-	      "notif_url" => HTT_MAIN."setstatus?order=".$orderId,
+	      "return_url" => HTT_MAIN."returnstatus-rakitra?order=".$orderId,
+	      "cancel_url" => HTT_MAIN."cancel-rakitra?order=".$orderId,
+	      "notif_url" => HTT_MAIN."setstatus-rakitra?order=".$orderId,
 	      "lang" => "fr",
 	      "reference" => "ref uf",
 	    ];
