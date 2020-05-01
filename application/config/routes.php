@@ -68,6 +68,10 @@ $route['returnstatus-rakitra']   = 'orange/api/returnstatus';
 $route['eglise-page']            = 'eglise/page';
 $route['attach-money']           = 'eglise/page/money';
 $route['attach-fidel']           = 'eglise/page/fidele';
+$route['screen-eglise']          = 'eglise/page/screen';
+$route['get-action-filde']       = 'eglise/page/getactionfidele';
+
+
 
 
 

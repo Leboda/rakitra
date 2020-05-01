@@ -29,7 +29,7 @@
   <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap-select.min.css" />
   
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
   <!-- =======================================================
   * Template Name: Personal - v2.0.1
   * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
@@ -86,7 +86,7 @@
   <script src="<?php echo base_url(); ?>assets/js/bootstrap-select.min.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/main.js"></script>
 
 </body>
 

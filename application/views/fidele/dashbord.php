@@ -13,12 +13,13 @@
         
         <div class="form-row">
           <div class="col-md-12 form-group">
-            <select name="eglise" id="eglise" class="form-control selectpicker">
-              <option>Fiangonana misy anao</option>
+            <input type="hidden" name="egliseChoice" class="egliseChoice">
+            <input placeholder="Safidio ny finagonanao" class="form-control eglise-data-list" list="ice-egilise-flavors" id="eglise" name="eglise" />
+            <datalist id="ice-egilise-flavors">
               <?php foreach ($eglise as $e) { ?>
-                <option value="<?php echo $e->id; ?>"><?php echo utf8_decode($e->nom); ?></option>
+                <option value="<?php echo utf8_decode($e->nom); ?>" data-id="<?php echo utf8_decode($e->id); ?>">
               <?php } ?>
-            </select>
+            </datalist>
           </div> 
         </div>       
         <div class="form-row">
@@ -68,7 +69,7 @@
 
       <div class="row">
         <div class="col-lg-4" data-aos="fade-right">
-          <img src="assets/img/uf.png" class="img-thumbnail" alt="Logo univ-fianar">
+          <img src="<?php echo base_url(); ?>assets/img/uf.png" class="img-thumbnail" alt="Logo univ-fianar">
         </div>
         <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
           <h3>Tetikasa RAKITRA</h3>          

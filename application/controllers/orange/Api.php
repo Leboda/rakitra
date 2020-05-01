@@ -42,9 +42,11 @@ class Api extends CI_Controller {
 		$data_compte = array(
 			'montant_total'      => $this->transactionModel->getAmountByOrderPaiement($_GET['order']) + $this->compteModel->getAmountByIdCompte($this->transactionModel->getIdCompteByOrderPaiement($_GET['order']))
 		);
-		$this->transactionModel->update($data_update,$_GET['order']);
-		$this->compteModel->update($data_compte,$this->transactionModel->getIdCompteByOrderPaiement($_GET['order']));
 
+		$this->transactionModel->update($data_update,$_GET['order']);
+		if ($data['status'] == "SUCCESS") {			
+			$this->compteModel->update($data_compte,$this->transactionModel->getIdCompteByOrderPaiement($_GET['order']));
+		}
 	}
 
 	public function returnstatus(){		

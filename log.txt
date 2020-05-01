@@ -1,0 +1,55 @@
+[1/05/20 11:45:00] - order : RAKITRA_LAH_1588326263MG 
+[1/05/20 11:45:00] - txnid : MP200501.1144.B01764 
+[1/05/20 11:45:00] - notif_token : f9wf1hvk7xmxz0bzvfrxeq6cyondcufk 
+[1/05/20 11:45:00] - status : SUCCESS 
+[1/05/20 11:45:00] - date : 20-05-01 
+[1/05/20 11:42:33] - order : RAKITRA_LAH_1588326120MG 
+[1/05/20 11:42:33] - txnid :  
+[1/05/20 11:42:33] - notif_token : pkjaawgpjyyqu0zxwbeixzvyejzmygdm 
+[1/05/20 11:42:33] - status : FAILED 
+[1/05/20 11:42:33] - date : 20-05-01 
+[1/05/20 11:42:01] - order : RAKITRA_LAH_1588325500MG 
+[1/05/20 11:42:01] - txnid :  
+[1/05/20 11:42:01] - notif_token : wg3uhnot3qetrttwlfwwina9h52ufptq 
+[1/05/20 11:42:01] - status : FAILED 
+[1/05/20 11:42:01] - date : 20-05-01 
+[1/05/20 11:40:20] - order : RAKITRA_LAH_1588325949MG 
+[1/05/20 11:40:20] - txnid : MP200501.1140.B01763 
+[1/05/20 11:40:20] - notif_token : 6ytfyoj3mdnh1qxhpawepot5bxy6k0jb 
+[1/05/20 11:40:20] - status : SUCCESS 
+[1/05/20 11:40:20] - date : 20-05-01 
+[1/05/20 10:53:31] - order : RAKITRA_LAH_1588323192MG 
+[1/05/20 10:53:31] - txnid : MP200501.1053.B01762 
+[1/05/20 10:53:31] - notif_token : iys9ai1yf7wwt9st1fgrtkttagc0a4ls 
+[1/05/20 10:53:31] - status : SUCCESS 
+[1/05/20 10:53:31] - date : 20-05-01 
+[1/05/20 10:52:14] - order : RAKITRA_LAH_1588323116MG 
+[1/05/20 10:52:14] - txnid : MP200501.1052.B01761 
+[1/05/20 10:52:14] - notif_token : 4gvysyafgolvt9bdgbscxdleazabr3bg 
+[1/05/20 10:52:14] - status : SUCCESS 
+[1/05/20 10:52:14] - date : 20-05-01 
+[1/05/20 10:48:54] - order : RAKITRA_LAH_1588322150MG 
+[1/05/20 10:48:54] - txnid :  
+[1/05/20 10:48:54] - notif_token :  
+[1/05/20 10:48:54] - status :  
+[1/05/20 10:48:54] - date : 20-05-01 
+[1/05/20 10:48:14] - order : RAKITRA_LAH_1588322150MG 
+[1/05/20 10:48:14] - txnid :  
+[1/05/20 10:48:14] - notif_token :  
+[1/05/20 10:48:14] - status :  
+[1/05/20 10:48:14] - date : 20-05-01 
+[1/05/20 10:47:16] - order : RAKITRA_LAH_1588322150MG 
+[1/05/20 10:47:16] - txnid :  
+[1/05/20 10:47:16] - notif_token :  
+[1/05/20 10:47:16] - status :  
+[1/05/20 10:47:16] - date : 20-05-01 
+[1/05/20 10:46:53] - order : RAKITRA_LAH_1588322150MG 
+[1/05/20 10:46:53] - txnid :  
+[1/05/20 10:46:53] - notif_token :  
+[1/05/20 10:46:53] - status :  
+[1/05/20 10:46:53] - date : 20-05-01 
+[1/05/20 10:36:09] - order : RAKITRA_LAH_1588322150MG 
+[1/05/20 10:36:09] - txnid : MP200501.1036.A01696 
+[1/05/20 10:36:09] - notif_token : 9iecwyamtal4cvqwbxpsrpdlx6snkrjf 
+[1/05/20 10:36:09] - status : SUCCESS 
+[1/05/20 10:36:09] - date : 20-05-01 

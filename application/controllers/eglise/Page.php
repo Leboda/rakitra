@@ -6,6 +6,7 @@ class Page extends CI_Controller {
 	{
 		parent::__construct();
 		$this->templates = 'include/eglise-template';
+		$this->templates_screen = 'include/eglise-screen-template';
 		$this->views     = 'eglise/';
 		$this->load->model('egliseModel');	
 		$this->load->model('compteModel');	
@@ -34,4 +35,17 @@ class Page extends CI_Controller {
 		$this->template->load($this->templates,$this->views.'fideles',$this->data);
 	}
 
+	public function screen(){
+		if (isset($_GET)) {
+			$this->template->set('title','Mes depôts');
+			$this->data['amount_total'] = $this->compteModel->getAllByIdEglise($this->session->userdata('idEglise'));
+		}
+		$this->template->load($this->templates_screen,$this->views.'screen',$this->data);
+	}
+
+	public function getactionfidele(){
+		$this->data['amount_total'] = $this->compteModel->getAllByIdEglise($this->session->userdata('idEglise'));
+		$this->data['transactionInfo'] = $this->transactionModel->getNewFidelSuccessOpersation($this->session->userdata('idEglise'))->result();
+		echo json_encode($this->data);
+	}
 }

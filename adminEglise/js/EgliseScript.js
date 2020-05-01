@@ -16,6 +16,8 @@ $(document).ready(function(){
 		responsive: true
 	});
 
+	setInterval(screnUpdate, 24000); 
+
 	
  
 	$('.btn-add-versement').click(function(){
@@ -94,4 +96,38 @@ $(document).on('change', 'input[type=radio][name=choix_versement]', function (ev
     	$('.title_amount_partial').hide();
     }    
 });
+
+
+
+function openScreenEglise(idEglise){
+	console.log($('.base_url').val()+"screen-eglise");
+  	var myWindow = window.open($('.base_url').val()+"screen-eglise", "MsgWindow", "width=250,height=300");
+ // myWindow.document.write("<p>This is 'MsgWindow'. I am 200px wide and 100px tall!</p>");
+}
+
+
+function screnUpdate() { 
+	var HTML = "";
+	$.ajax({
+		type : 'GET',
+		url  : $('.base_url').val()+'get-action-filde',
+		datatype : 'json',
+		success : function(data){
+			var response             = JSON.parse(data);
+			var amount_total          = response.amount_total;
+			var transactionInfo       = response.transactionInfo;
+			$('.amount_total').text(amount_total);
+	        $.each(transactionInfo, function(i, field){
+				HTML += '<div class="alert alert-success">';
+	            	HTML += '<strong>'+field.nom+'!</strong> a fait un offrande de '+field.montant+' Ar.'
+	            HTML += '</div>';
+	        });
+			
+            $('.notification').html(HTML);
+            $('.notification').show('slow');
+            setTimeout("$('.notification').hide('slow')",9000);  
+		}
+	});
+	return false;
+}
 

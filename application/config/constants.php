@@ -85,7 +85,13 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 
-define('HTT_MAIN', "http://192.198.1.108/rakitra/");
+define('HTT_MAIN', "http://41.242.102.4/rakitra/");
+
 define('URL_API_ORANGE_TOKEN', "https://api.orange.com/oauth/v2/token");
+
+
 /*prod*/
-define('URL_API_ORANGE_LOADING_PAIEMENT', "https://api.orange.com/orange-money-webpay/mg/v1/webpayment");
+//define('URL_API_ORANGE_LOADING_PAIEMENT', "https://api.orange.com/orange-money-webpay/mg/v1/webpayment");
+
+/*DEV*/
+define('URL_API_ORANGE_LOADING_PAIEMENT', "https://api.orange.com/orange-money-webpay/dev/v1/webpayment");

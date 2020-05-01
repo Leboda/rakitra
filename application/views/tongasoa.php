@@ -65,7 +65,7 @@
 
       <div class="row">
         <div class="col-lg-4" data-aos="fade-right">
-          <img src="assets/img/uf.png" class="img-thumbnail" alt="Logo univ-fianar">
+          <img src="<?php echo base_url(); ?>assets/img/uf.png" class="img-thumbnail" alt="Logo univ-fianar">
         </div>
         <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
           <h3>Tetikasa RAKITRA</h3>          

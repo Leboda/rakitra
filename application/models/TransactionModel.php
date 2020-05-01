@@ -6,7 +6,9 @@ class TransactionModel extends CI_Model
 	public function __construct()
 	{
 		parent::__construct();
-		$this->table = 'transaction';
+		$this->table        = 'transaction';
+		$this->table_fidele = 'fidele';
+		$this->table_compte = 'compte';
 	}
 
 
@@ -81,5 +83,17 @@ class TransactionModel extends CI_Model
 		$this->db->select('*');
         $this->db->from($this->table);
         return $this->db->get(); 
+	}
+
+	public function getNewFidelSuccessOpersation($idEglise){
+		$dateLeftTwentySec = time()-60;
+		$this->db->select('f.*,t.montant,t.date');
+        $this->db->from($this->table_fidele.' as f');
+        $this->db->join($this->table.' as t', 't.id_fidele = f.id');
+        $this->db->join($this->table_compte.' as c', 'c.id = t.id_compte');
+		$this->db->where('c.id_eglise', $idEglise);
+		$this->db->where('t.status', "SUCCESS");
+		$this->db->where('t.date >=', $dateLeftTwentySec);
+        return $this->db->get();        	
 	}
 }

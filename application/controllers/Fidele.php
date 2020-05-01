@@ -27,29 +27,28 @@ class Fidele extends CI_Controller {
 				'nom'               => $_POST['nom'],
 				'tel'               => $_POST['tel'],
 				'mail'              => $_POST['mail'],
-				'id_eglise'         => $_POST['eglise'],
+				'id_eglise'         => $_POST['egliseChoice'],
 				'adresse'           => $_POST['adresse']
 			);
 			$idFidele = $this->fideleModel->add($dataPersonneFidele);
-
 			$apiInfo = $this->orangeApiConfigModel->getApiTokenSecond($_POST['vola'],$this->orangeApiConfigModel->getTokenApi(),$this->orangeApiConfigModel->getMarchantKeyApi());
+
+			//var_dump($apiInfo);
+			//die();
 			
 			if ($apiInfo['message'] == 'OK') {		
 				$dataTransaction = array(
 					'id_fidele'          => $idFidele,
-					'id_compte'          => $this->compteModel->getIdCompteByIdEglise($_POST['eglise']),
+					'id_compte'          => $this->compteModel->getIdCompteByIdEglise($_POST['egliseChoice']),
 					'montant'            => $_POST['vola'],
 					'date'               => time(),
 					'status'             => 'INITIATED',
 					'ordre_paiement'     => $apiInfo['orderId'],
 					'token_paiement'     => $apiInfo['pay_token'],
-					/*'ordre_paiement'     => "Test_oder",
-					'token_paiement'     => "test_token",*/
 					'notif_token'        => NULL,
 					'txnid'              => NULL
 				);
-				$this->transactionModel->add($dataTransaction); 
-				//redirect("test_redirect_url_orange","refresh"); 					
+				$this->transactionModel->add($dataTransaction); 				
 				redirect($apiInfo['redirecturl'],"refresh"); 					
 			}
 		}

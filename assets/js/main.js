@@ -78,6 +78,14 @@
     $(".mobile-nav, .mobile-nav-toggle").hide();
   }
 
+  $('.eglise-data-list').change(function (){
+    var val = $('.eglise-data-list').val()
+    var egliseId = $('#ice-egilise-flavors option').filter(function() {
+        return this.value == val;
+    }).data('id');
+    $('.egliseChoice').val(egliseId);
+  }); 
+
  /* // jQuery counterUp
   $('[data-toggle="counter-up"]').counterUp({
     delay: 10,
@@ -135,3 +143,4 @@
   });*/
 
 })(jQuery);
+

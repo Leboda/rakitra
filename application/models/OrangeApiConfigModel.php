@@ -87,7 +87,8 @@ class OrangeApiConfigModel extends CI_Model
 		$datanew =
 	    [
 	      "merchant_key"   => $marchant_key,
-	      "currency" => "MGA",
+	      "currency" => "OUV",
+	      //"currency" => "MGA",
 	      "order_id" => $orderId,
 	      "amount" => $amount,
 	      "return_url" => HTT_MAIN."returnstatus-rakitra?order=".$orderId,
